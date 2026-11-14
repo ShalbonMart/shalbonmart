@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/preview/:slug", "destination": "/api/preview?slug=:slug" },
+    { "source": "/preview/:slug/:path*", "destination": "/api/preview?slug=:slug&path=:path*" }
+  ]
+}

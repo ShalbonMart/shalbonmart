@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Admin · Shalbon Mart</title>
+<style>
+:root{--bg:#eef3ff;--ink:#0b1b3a;--muted:#4b5a78;--blue:#1f6bff;--card:rgba(255,255,255,.75);--edge:rgba(255,255,255,.95)}
+@media(prefers-color-scheme:dark){:root{--bg:#070d1d;--ink:#f2f6ff;--muted:#9db0d3;--card:rgba(255,255,255,.08);--edge:rgba(255,255,255,.2)}}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;font:16px system-ui,sans-serif;background:var(--bg);color:var(--ink);padding:20px}
+main{max-width:860px;margin:0 auto;display:grid;gap:18px}
+.c{background:var(--card);border:1px solid var(--edge);border-radius:22px;padding:22px}
+h2{margin:0 0 14px}
+input,select,textarea{width:100%;padding:12px 14px;margin:6px 0 12px;border-radius:12px;border:1px solid var(--edge);background:var(--card);color:var(--ink);font:inherit}
+label{font-size:14px;color:var(--muted)}
+button{padding:11px 22px;border-radius:999px;border:0;background:var(--blue);color:#fff;font:600 15px system-ui;cursor:pointer}
+button.g{background:transparent;color:var(--ink);border:1px solid var(--edge);padding:7px 14px}
+button:disabled{opacity:.6;cursor:wait}
+.r{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+@media(max-width:600px){.r{grid-template-columns:1fr}}
+.p{display:flex;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--edge)}
+.p img{width:56px;height:40px;object-fit:cover;border-radius:8px;background:var(--edge)}
+.p b{flex:1}.p small{color:var(--muted)}
+#st,#le{color:var(--blue);margin-left:10px}
+</style>
+</head>
+<body>
+<main>
+  <div class="c" id="lg">
+    <h2>Admin login</h2>
+    <input id="pw" type="password" placeholder="Admin password" autocomplete="current-password">
+    <button id="go">Login</button><span id="le"></span>
+  </div>
+  <div id="app" hidden>
+    <div class="c">
+      <h2>Add product</h2>
+      <form id="f">
+        <div class="r">
+          <div><label>Category</label><select id="cat"><option value="template">Template</option><option value="software">Software</option><option value="digital">Digital download</option></select></div>
+          <div><label>Price (BDT)</label><input id="price" type="number" min="0" required></div>
+          <div><label>Title (English)</label><input id="te" required></div>
+          <div><label>Title (বাংলা)</label><input id="tb"></div>
+          <div><label>Description (English)</label><textarea id="de" rows="3"></textarea></div>
+          <div><label>Description (বাংলা)</label><textarea id="db" rows="3"></textarea></div>
+          <div><label>Tag (e.g. Next.js, 1 Year License, PDF)</label><input id="tag"></div>
+          <div><label>Cover image</label><input id="img" type="file" accept="image/*"></div>
+          <div><label>More images (optional)</label><input id="gal" type="file" accept="image/*" multiple></div>
+          <div><label>Product file (delivered after purchase)</label><input id="file" type="file"></div>
+        </div>
+        <div id="tpl" class="r">
+          <div><label>Live preview ZIP (built static site, index.html inside, relative paths)</label><input id="pz" type="file" accept=".zip"></div>
+          <div><label>or Live demo URL (https://…)</label><input id="demo" type="url"></div>
+        </div>
+        <button id="sub">Upload &amp; publish</button><span id="st"></span>
+      </form>
+    </div>
+    <div class="c"><h2>Products</h2><div id="ls"></div></div>
+  </div>
+</main>
+<script type="module">
+import { upload } from 'https://esm.sh/@vercel/blob@0.27.3/client';
+const $ = (i) => document.getElementById(i);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+let pw = sessionStorage.getItem('pw') || '', items = [];
+
+const api = (op, body) => fetch('/api/admin?op=' + op, {
+  method: body ? 'POST' : 'GET',
+  headers: { 'x-admin-password': pw, 'content-type': 'application/json' },
+  body: body && JSON.stringify(body),
+}).then(async (r) => { const d = await r.json().catch(() => ({})); if (!r.ok) throw new Error(d.error || r.status); return d; });
+
+const up = (f) => upload(`files/${Date.now()}-${f.name}`, f, {
+  access: 'public', handleUploadUrl: '/api/admin?op=upload', clientPayload: pw, multipart: f.size > 5e6,
+}).then((r) => r.url);
+
+async function enter() {
+  await api('check');
+  sessionStorage.setItem('pw', pw);
+  $('lg').hidden = true; $('app').hidden = false;
+  await load();
+}
+async function load() {
+  items = (await api('list')).products;
+  $('ls').innerHTML = items.length ? items.map((p) => `<div class="p"><img src="${esc(p.image || '')}" alt=""><b>${esc(p.title.en)}<br><small>${p.cat} · ৳${p.price}${p.previewSlug ? ' · preview' : ''}</small></b><button class="g" data-id="${p.id}">Delete</button></div>`).join('') : '<small>No products yet.</small>';
+}
+$('go').onclick = async () => { pw = $('pw').value; try { await enter() } catch (e) { $('le').textContent = e.message === 'unauthorized' ? 'Wrong password' : 'Error: ' + e.message } };
+$('pw').onkeydown = (e) => { if (e.key === 'Enter') $('go').click() };
+$('cat').onchange = () => { $('tpl').hidden = $('cat').value !== 'template' };
+$('ls').onclick = async (e) => {
+  const id = e.target.dataset.id; if (!id || !confirm('Delete this product?')) return;
+  await api('save', { products: items.filter((p) => p.id !== id) }); await load();
+};
+$('f').onsubmit = async (e) => {
+  e.preventDefault();
+  const st = $('st'), btn = $('sub'); btn.disabled = true;
+  try {
+    const id = Math.random().toString(36).slice(2, 8), one = (i) => $(i).files[0];
+    st.textContent = 'Uploading images…';
+    const image = one('img') ? await up(one('img')) : '';
+    const gallery = []; for (const f of $('gal').files) gallery.push(await up(f));
+    st.textContent = 'Uploading product file…';
+    const file = one('file') ? await up(one('file')) : '';
+    let previewZip = '';
+    if ($('cat').value === 'template' && one('pz')) { st.textContent = 'Uploading preview…'; previewZip = await up(one('pz')); }
+    const p = {
+      id, cat: $('cat').value, price: +$('price').value, tag: $('tag').value.trim(),
+      title: { en: $('te').value.trim(), bn: $('tb').value.trim() || $('te').value.trim() },
+      desc: { en: $('de').value.trim(), bn: $('db').value.trim() || $('de').value.trim() },
+      image, gallery, file, previewZip, previewSlug: previewZip ? id : '', demoUrl: $('demo').value.trim(), createdAt: Date.now(),
+    };
+    st.textContent = 'Publishing…';
+    await api('save', { products: [...items, p] });
+    $('f').reset(); await load(); st.textContent = 'Published ✓';
+  } catch (err) { st.textContent = 'Error: ' + err.message; }
+  btn.disabled = false;
+};
+if (pw) enter().catch(() => {});
+</script>
+</body>
+</html>

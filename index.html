@@ -552,7 +552,7 @@ function renderShop(){
 /* Hero Preview - Strictly scaled inside #hv so it never overflows */
 function renderHero(){
   if(!products||!products.length)return;
-  const p=products.find(x=>x.image)||products.find(x=> x.previewUrl)||products[0];
+  const p=products.find(x=>x.image)||products.find(x=>x.previewUrl)||products[0];
   $('sn').textContent=products.length;$('hn').textContent=pt(p);
   const hv=$('hv');
   if(p.image){

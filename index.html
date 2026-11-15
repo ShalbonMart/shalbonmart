@@ -11,8 +11,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef3ff;--ink:#0b1b3a;--muted:#4b5a78;--yellow:#ffc928;--blue:#1f6bff;--glass:rgba(255,255,255,.55);--edge:rgba(255,255,255,.85);--shadow:0 20px 50px rgba(31,80,200,.12);--chip:rgba(255,255,255,.7);--card-bg:rgba(255,255,255,.72)}
-:root[data-theme="dark"]{--bg:#070d1d;--ink:#f2f6ff;--muted:#9db0d3;--glass:rgba(15,23,42,.65);--edge:rgba(255,255,255,.14);--shadow:0 20px 50px rgba(0,0,0,.5);--chip:rgba(255,255,255,.1);--card-bg:rgba(15,23,42,.75)}
+:root{--bg:#eef3ff;--ink:#0b1b3a;--muted:#4b5a78;--yellow:#ffc928;--blue:#1f6bff;--glass:rgba(255,255,255,.55);--edge:rgba(255,255,255,.85);--shadow:0 20px 50px rgba(31,80,200,.12);--chip:rgba(255,255,255,.7);--card-bg:rgba(255,255,255,.78)}
+:root[data-theme="dark"]{--bg:#070d1d;--ink:#f2f6ff;--muted:#9db0d3;--glass:rgba(15,23,42,.65);--edge:rgba(255,255,255,.14);--shadow:0 20px 50px rgba(0,0,0,.5);--chip:rgba(255,255,255,.1);--card-bg:rgba(15,23,42,.78)}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Hind Siliguri","Plus Jakarta Sans",system-ui,sans-serif;overflow-x:hidden;font-size:16px;line-height:1.6}
@@ -21,7 +21,7 @@ a{color:inherit;text-decoration:none}
 .ball{position:absolute;border-radius:50%;will-change:transform}
 .ball.y{background:radial-gradient(circle at 30% 30%,#ffe27a,var(--yellow) 60%,#ffab00)}
 .ball.b{background:radial-gradient(circle at 30% 30%,#7fb0ff,var(--blue) 60%,#0a3fc4)}
-.wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 20px}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 18px}
 .glass{background:var(--glass);-webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);border:1px solid var(--edge);border-radius:28px;box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.45)}
 #prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--yellow),var(--blue));z-index:90}
 .btn{font:600 15px "Plus Jakarta Sans","Hind Siliguri",sans-serif;color:var(--ink);cursor:pointer;padding:11px 22px;border-radius:999px;border:1px solid var(--edge);background:var(--glass);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);transition:all .22s ease;position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}
@@ -54,28 +54,34 @@ select.ctl option{color:#0b1b3a}
  .links{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;padding:12px;border-radius:24px;background:var(--bg);border:1px solid var(--edge);box-shadow:var(--shadow)}
  .links.open{display:flex}}
 @media(max-width:460px){.logo span{display:none}}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;padding:clamp(40px,7vw,90px) 0 30px}
+
+/* =========================================================
+   HERO SECTION FIX (Strictly contained inside 1200px wrap)
+   ========================================================= */
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:34px;align-items:center;padding:clamp(36px,6vw,80px) 0 30px}
 @media(max-width:940px){.hero{grid-template-columns:1fr}}
 .tag{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted)}
 .tag b{width:8px;height:8px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 4px rgba(255,201,40,.3)}
 h1,h2,h3{font-family:"Plus Jakarta Sans","Hind Siliguri",sans-serif;line-height:1.15;letter-spacing:-.02em}
-h1{font-weight:800;font-size:clamp(36px,5.4vw,66px);margin:18px 0}
+h1{font-weight:800;font-size:clamp(34px,5vw,62px);margin:18px 0}
 h1 em{font-style:normal;background:linear-gradient(90deg,var(--blue),#7fb0ff 50%,var(--yellow));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:clamp(17px,2vw,20px);line-height:1.65;color:var(--muted);max-width:52ch;margin-bottom:28px}
+.lead{font-size:clamp(16px,1.9vw,19px);line-height:1.65;color:var(--muted);max-width:52ch;margin-bottom:28px}
 .row{display:flex;gap:12px;flex-wrap:wrap}
 .stats{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
 .stat{padding:16px 20px;border-radius:20px;min-width:120px}
 .stat strong{display:block;font:800 28px "Plus Jakarta Sans",sans-serif}
 .stat span{font-size:14px;color:var(--muted)}
-.dash{padding:22px;position:relative}
+.dash{padding:20px;position:relative;width:100%;max-width:100%;min-width:0}
 .dots{display:flex;gap:6px;margin-bottom:14px}.dots i{width:11px;height:11px;border-radius:50%;background:var(--chip)}.dots i:nth-child(1){background:var(--yellow)}.dots i:nth-child(2){background:var(--blue)}
-.hv{aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,rgba(255,201,40,.3),rgba(31,107,255,.3));display:grid;place-items:center;position:relative}
-.hv img,.hv iframe{width:100%;height:100%;object-fit:cover;border:0;display:block}
-.hv svg{width:30%;stroke:var(--blue);fill:none;stroke-width:1.4}
+.hv{width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,rgba(255,201,40,.25),rgba(31,107,255,.25));display:grid;place-items:center;position:relative}
+.hv img{width:100%;height:100%;object-fit:cover;border:0;display:block}
+.hv iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
+.hv svg{width:28%;stroke:var(--blue);fill:none;stroke-width:1.4}
 .hi{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
 .hi b{display:block;font:700 18px "Plus Jakarta Sans","Hind Siliguri",sans-serif}.hi small{color:var(--muted)}
-.float{position:absolute;padding:10px 16px;border-radius:16px;font-size:14px;font-weight:600}
-.float.a{top:-18px;right:20px}.float.b{bottom:-18px;left:20px}.float em{font-style:normal;color:var(--blue)}
+.float{position:absolute;padding:10px 16px;border-radius:16px;font-size:14px;font-weight:600;z-index:3}
+.float.a{top:-16px;right:18px}.float.b{bottom:-16px;left:18px}.float em{font-style:normal;color:var(--blue)}
+
 section{padding:60px 0 10px}
 .sh{max-width:660px;margin-bottom:28px}
 .eyebrow{display:inline-block;font:700 13px "Plus Jakarta Sans",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
@@ -96,80 +102,94 @@ h2{font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:10px}
 .note{display:block;color:var(--muted);font-size:14px;margin:0 4px 22px}
 
 /* =========================================================
-   CODE & CHILL STYLE PRODUCT CARDS (Grid, Size, Title, Desc)
+   CODE & CHILL (codeandchill.store) STYLE PRODUCT CARDS
    ========================================================= */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:26px}
-@media(max-width:420px){.grid{grid-template-columns:1fr}}
-.pc{background:var(--card-bg);border:1px solid var(--edge);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;position:relative;cursor:pointer;transition:transform .32s cubic-bezier(.16,1,.3,1),box-shadow .32s ease,border-color .32s ease;box-shadow:0 10px 30px rgba(15,23,42,.06)}
-.pc:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(31,107,255,.15);border-color:rgba(31,107,255,.45)}
-.cv{aspect-ratio:16/10;background:linear-gradient(135deg,rgba(255,201,40,.18),rgba(31,107,255,.18));display:grid;place-items:center;overflow:hidden;position:relative;border-bottom:1px solid var(--edge)}
-.cv img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.16,1,.3,1)}
-.pc:hover .cv img{transform:scale(1.05)}
-.cv svg{width:26%;stroke:var(--blue);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+@media(max-width:400px){.grid{grid-template-columns:1fr}}
+.pc{background:var(--card-bg);border:1px solid var(--edge);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;position:relative;cursor:pointer;transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;box-shadow:0 8px 26px rgba(15,23,42,.06)}
+.pc:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(31,107,255,.14);border-color:rgba(31,107,255,.45)}
+.cv{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,rgba(255,201,40,.16),rgba(31,107,255,.16));display:grid;place-items:center;overflow:hidden;position:relative;border-bottom:1px solid var(--edge)}
+.cv img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+.pc:hover .cv img{transform:scale(1.04)}
+.cv svg{width:24%;stroke:var(--blue);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 .cv iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
-.live{position:absolute;left:14px;bottom:14px;padding:5px 12px;border-radius:999px;background:rgba(11,27,58,.78);color:#fff;font-size:12px;font-weight:700;letter-spacing:.03em;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:inline-flex;align-items:center;gap:6px;z-index:2}
-.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.3)}
-.fav{position:absolute;top:14px;right:14px;z-index:3;width:36px;height:36px;background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-:root[data-theme="dark"] .fav{background:rgba(15,23,42,.75)}
+.live{position:absolute;left:12px;top:12px;padding:4px 10px;border-radius:6px;background:#ef4444;color:#fff;font:800 10.5px "Plus Jakarta Sans",sans-serif;letter-spacing:.05em;z-index:2;text-transform:uppercase}
+.fav{position:absolute;top:12px;right:12px;z-index:3;width:34px;height:34px;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+:root[data-theme="dark"] .fav{background:rgba(15,23,42,.8)}
 .fav.on{background:var(--yellow);border-color:var(--yellow);color:#241a00}
 .fav.on svg{fill:currentColor}
-.pb{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
-.pc-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
-.badge{display:inline-flex;align-items:center;padding:4px 11px;border-radius:8px;background:var(--chip);font:600 12px "Plus Jakarta Sans","Hind Siliguri",sans-serif;color:var(--muted);letter-spacing:.01em}
-.price{font:800 19px "Plus Jakarta Sans",sans-serif;color:var(--ink)}
-.pc h3{font:700 19px/1.35 "Plus Jakarta Sans","Hind Siliguri",sans-serif;color:var(--ink);margin-bottom:6px;letter-spacing:-.015em;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
-.pc p{color:var(--muted);font:400 14.5px/1.55 "Hind Siliguri","Plus Jakarta Sans",sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:18px}
-.pc-acts{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid var(--edge)}
-.pc-acts .btn{flex:1;padding:9px 14px;font-size:14px;border-radius:12px}
+.pb{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.pc-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
+.pc h3{font:700 18px/1.3 "Plus Jakarta Sans","Hind Siliguri",sans-serif;color:var(--ink);letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.pc .price{font:800 17px "Plus Jakarta Sans",sans-serif;color:var(--ink);flex-shrink:0}
+.pc p{color:var(--muted);font:400 14px/1.5 "Hind Siliguri","Plus Jakarta Sans",sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:14px}
+.pc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:12px;border-top:1px solid var(--edge)}
+.badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:6px;background:var(--chip);font:600 11.5px "Plus Jakarta Sans","Hind Siliguri",sans-serif;color:var(--muted)}
+.pc-btns{display:flex;gap:6px}
+.pc-btns .btn{padding:7px 13px;font-size:13px;border-radius:8px}
 
 /* =========================================================
-   OASEL / CODEANDCHILL STYLE PRODUCT VIEW MODAL
+   OASEL (codeandchill.store/templates/oasel) PRODUCT VIEW
    ========================================================= */
-.modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:18px;background:rgba(5,12,32,.68);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;background:rgba(5,12,32,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .modal[hidden]{display:none}
-.mbox{position:relative;width:min(1340px,100%);max-height:94vh;overflow:auto;padding:28px;background:var(--bg);border-radius:26px;border:1px solid var(--edge);box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.mbox{position:relative;width:min(1220px,100%);max-height:92vh;overflow:auto;padding:32px;background:#faf8f5;color:#18181b;border-radius:20px;border:1px solid rgba(0,0,0,.12);box-shadow:0 30px 90px rgba(0,0,0,.45)}
+:root[data-theme="dark"] .mbox{background:#0f172a;color:#f8fafc;border-color:rgba(255,255,255,.15)}
 .mbox.fs{width:100%;height:100%;max-height:none;border-radius:0;padding:18px}
-.x{position:sticky;top:0;float:right;z-index:10;margin-left:12px}
-.oasel-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--edge)}
-.oasel-bc{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);font-weight:500}
-.oasel-bc b{color:var(--ink)}
-.oasel-layout{display:grid;grid-template-columns:1.55fr 1fr;gap:32px;align-items:start}
-@media(max-width:980px){.oasel-layout{grid-template-columns:1fr}}
-.oasel-left{display:flex;flex-direction:column;gap:14px}
-.oasel-browser{border-radius:18px;border:1px solid var(--edge);background:var(--card-bg);overflow:hidden;box-shadow:0 16px 40px rgba(15,23,42,.1)}
-.oasel-bbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:var(--chip);border-bottom:1px solid var(--edge);flex-wrap:wrap}
-.oasel-dots{display:flex;align-items:center;gap:6px}
-.oasel-dots i{width:10px;height:10px;border-radius:50%;background:#f87171}
-.oasel-dots i:nth-child(2){background:#fbbf24}
-.oasel-dots i:nth-child(3){background:#34d399}
-.oasel-url{flex:1;min-width:160px;max-width:420px;padding:5px 12px;border-radius:8px;background:var(--bg);border:1px solid var(--edge);font:500 12.5px monospace;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.oasel-devs{display:flex;gap:6px;align-items:center}
-.oasel-devs button{padding:5px 11px;border-radius:8px;border:1px solid var(--edge);background:var(--bg);color:var(--muted);font:600 12px "Plus Jakarta Sans",sans-serif;cursor:pointer;transition:.2s}
-.oasel-devs button.on,.oasel-devs button:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-.oasel-viewport{width:100%;aspect-ratio:16/10;min-height:420px;background:#0f172a;display:flex;justify-content:center;align-items:stretch;overflow:hidden;position:relative}
-.oasel-viewport iframe{width:100%;height:100%;border:0;background:#fff;transition:width .35s ease}
-.oasel-viewport img{width:100%;height:100%;object-fit:cover;display:block}
-.oasel-viewport svg{width:24%;stroke:var(--blue);fill:none;stroke-width:1.4;margin:auto}
-.oasel-live-overlay{position:absolute;right:16px;bottom:16px;z-index:4}
-.thumbs{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
-.thumbs button,.thumbs img{width:88px;height:58px;object-fit:cover;border-radius:10px;cursor:pointer;border:2px solid var(--edge);background:var(--card-bg);padding:0;overflow:hidden;flex-shrink:0;transition:.2s}
-.thumbs .on{border-color:var(--blue);transform:translateY(-2px)}
-.oasel-right{position:sticky;top:16px;background:var(--card-bg);border:1px solid var(--edge);border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:18px}
-.oasel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
-.oasel-title{font:800 clamp(24px,3vw,32px)/1.2 "Plus Jakarta Sans","Hind Siliguri",sans-serif;color:var(--ink)}
-.oasel-price-box{padding:6px 14px;border-radius:12px;background:rgba(31,107,255,.12);color:var(--blue);font:800 24px "Plus Jakarta Sans",sans-serif;white-space:nowrap}
-.oasel-desc{color:var(--muted);font-size:16px;line-height:1.65}
-.oasel-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:480px){.oasel-btns{grid-template-columns:1fr}}
-.oasel-btns .btn{padding:14px 20px;border-radius:14px;font-size:15.5px;font-weight:700}
-.oasel-specs{border-top:1px solid var(--edge);padding-top:16px;display:grid;gap:10px}
-.oasel-specs h4{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
-.oasel-spec-row{display:flex;justify-content:space-between;font-size:14.5px;padding:8px 12px;border-radius:10px;background:var(--chip)}
-.oasel-spec-row span{color:var(--muted)}
-.oasel-spec-row strong{color:var(--ink)}
-.oasel-feats{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px;color:var(--muted)}
-.oasel-feats li{display:flex;align-items:center;gap:8px}
-.oasel-feats li::before{content:"✓";display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:rgba(34,197,94,.18);color:#16a34a;font-weight:800;font-size:11px}
+.x{position:sticky;top:0;float:right;z-index:10;margin-left:12px;background:#fff;color:#111;border:1px solid #d4d4d8}
+:root[data-theme="dark"] .x{background:#1e293b;color:#fff;border-color:#334155}
+.oasel-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:36px;align-items:start;clear:both;padding-top:8px}
+@media(max-width:920px){.oasel-grid{grid-template-columns:1fr;gap:24px}}
+
+/* Left Preview Frame (Matches Oasel bordered frame) */
+.oasel-frame-outer{border:1.5px solid #27272a;border-radius:8px;padding:10px;background:#fff;box-shadow:0 12px 32px rgba(0,0,0,.06)}
+:root[data-theme="dark"] .oasel-frame-outer{border-color:#475569;background:#1e293b}
+.oasel-stage{width:100%;aspect-ratio:16/10;position:relative;overflow:hidden;border-radius:4px;background:#f4f4f5;display:grid;place-items:center}
+.oasel-stage img{width:100%;height:100%;object-fit:cover;display:block}
+.oasel-stage iframe{width:100%;height:100%;border:0;background:#fff;display:block}
+.oasel-stage svg{width:24%;stroke:#1f6bff;fill:none;stroke-width:1.4}
+.oasel-badge-tl{position:absolute;top:12px;left:12px;background:#ef4444;color:#fff;font:800 10px "Plus Jakarta Sans",sans-serif;padding:4px 8px;border-radius:4px;letter-spacing:.05em;z-index:3}
+.oasel-pill-bar{position:absolute;top:12px;right:12px;display:flex;gap:6px;z-index:3;flex-wrap:wrap}
+.oasel-pill{padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.92);color:#18181b;border:1px solid rgba(0,0,0,.15);font:600 11.5px "Plus Jakarta Sans",sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.oasel-pill.dark,.oasel-pill.on{background:#18181b;color:#fff;border-color:#18181b}
+.thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto}
+.thumbs button,.thumbs img{width:84px;height:54px;object-fit:cover;border-radius:6px;cursor:pointer;border:1.5px solid #d4d4d8;background:#fff;padding:0;flex-shrink:0}
+.thumbs .on{border-color:#dc2626;box-shadow:0 0 0 2px rgba(220,38,38,.25)}
+
+/* Right Info Column (Matches Oasel Typography & Buttons) */
+.oasel-info{display:flex;flex-direction:column;gap:14px}
+.oasel-title{font:800 clamp(26px,3vw,34px)/1.15 "Plus Jakarta Sans","Hind Siliguri",sans-serif;letter-spacing:-.02em}
+.oasel-price-line{display:flex;align-items:baseline;gap:10px}
+.oasel-price-line .price{font:800 22px "Plus Jakarta Sans",sans-serif}
+.oasel-price-line del{color:#71717a;font-size:15px}
+.oasel-price-line .disc{color:#dc2626;font:700 13px "Plus Jakarta Sans",sans-serif}
+.oasel-desc{font-size:15.5px;line-height:1.6;color:#52525b}
+:root[data-theme="dark"] .oasel-desc{color:#cbd5e1}
+.oasel-meta-pills{display:flex;align-items:center;gap:12px;padding:4px 0}
+.oasel-like{padding:6px 14px;border-radius:999px;border:1px solid #d4d4d8;background:transparent;color:inherit;font:600 13px "Plus Jakarta Sans",sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.oasel-like.on{background:#fef2f2;border-color:#ef4444;color:#dc2626}
+.oasel-views{font:600 12px "Plus Jakarta Sans",sans-serif;color:#71717a;letter-spacing:.04em;text-transform:uppercase}
+.oasel-checks{list-style:none;padding:4px 0;display:grid;gap:7px;font-size:14px;color:#52525b}
+:root[data-theme="dark"] .oasel-checks{color:#94a3b8}
+.oasel-checks li::before{content:"✓";color:#d97706;font-weight:800;margin-right:8px}
+
+/* Action Stack: Buy (Red), Order/Cart (Outline), Live Preview (Dark) */
+.oasel-actions{display:grid;gap:10px;margin-top:4px}
+.obtn{width:100%;padding:14px 20px;border-radius:4px;font:700 14.5px "Plus Jakarta Sans","Hind Siliguri",sans-serif;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,opacity .2s;text-align:center}
+.obtn:hover{opacity:.94;transform:translateY(-1px)}
+.obtn-buy{background:#dc2626;color:#fff;border:1.5px solid #dc2626}
+.obtn-cart{background:transparent;color:inherit;border:1.5px solid #27272a}
+:root[data-theme="dark"] .obtn-cart{border-color:#64748b}
+.obtn-live{background:#18181b;color:#fff;border:1.5px solid #18181b}
+:root[data-theme="dark"] .obtn-live{background:#f8fafc;color:#0f172a;border-color:#f8fafc}
+
+.oasel-notes{font-size:12.5px;color:#71717a;display:grid;gap:4px;padding-top:4px}
+.oasel-notes span::before{content:"● ";color:#dc2626}
+.oasel-pack{padding:10px 12px;border-radius:6px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);font-size:13px}
+.oasel-pack b{color:#d97706;margin-right:6px}
+.oasel-bottom-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:4px}
+.oasel-bottom-btns button{padding:10px;border-radius:4px;border:1.5px solid #27272a;background:transparent;color:inherit;font:600 13px "Plus Jakarta Sans","Hind Siliguri",sans-serif;cursor:pointer}
+:root[data-theme="dark"] .oasel-bottom-btns button{border-color:#475569}
 
 .empty{grid-column:1/-1;color:var(--muted);padding:30px 0}
 .why,.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
@@ -389,7 +409,7 @@ footer{padding:60px 18px 90px}
 </div><div class="fbot"><span>© 2026 Shalbon Mart. All rights reserved.</span><span>19/1, Bodhonbari, Mirpur-1, Dhaka-1216</span></div></div></footer>
 
 <div class="fab"><button class="ctl" id="up" aria-label="Top"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button><a class="ctl wa" href="https://wa.me/8801337407497" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-13.5 7.8L3 21l1.3-4.4A9 9 0 1121 12z"/></svg></a></div>
-<div class="modal" id="modal" hidden><div class="mbox glass" id="mbox"><button class="ctl x" id="mx" aria-label="Close">&times;</button><div id="mbody"></div></div></div>
+<div class="modal" id="modal" hidden><div class="mbox" id="mbox"><button class="ctl x" id="mx" aria-label="Close">&times;</button><div id="mbody"></div></div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -409,10 +429,10 @@ if(G){
   balls.forEach((el,i)=>{G.from(el,{scale:0,opacity:0,duration:1.4,delay:i*.1,ease:'elastic.out(1,.6)'});G.to(el,{x:'random(-90,90)',y:'random(-90,90)',duration:'random(5,9)',ease:'sine.inOut',repeat:-1,yoyo:true,delay:i*.2})});
   const qx=balls.map(b=>G.quickTo(b,'xPercent',{duration:1.2,ease:'power3'})),qy=balls.map(b=>G.quickTo(b,'yPercent',{duration:1.2,ease:'power3'}));
   addEventListener('pointermove',e=>{const nx=e.clientX/innerWidth-.5,ny=e.clientY/innerHeight-.5;balls.forEach((_,i)=>{const d=(i%3+1)*14;qx[i](nx*d);qy[i](ny*d)})});
-  if(ST){balls.forEach((el,i)=>G.to(el,{marginTop:-((i%4)+1)*90,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:1}}));G.to('#dash',{y:-40,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}})}
+  if(ST){balls.forEach((el,i)=>G.to(el,{marginTop:-((i%4)+1)*90,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:1}}));G.to('#dash',{y:-30,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}})}
   G.from('#nav,.topbar',{y:-30,opacity:0,duration:.8,ease:'power4.out'});
   G.from('.hero h1,.hero .lead,.hero .row,.stat',{y:26,opacity:0,duration:.8,stagger:.08,ease:'power3.out',delay:.2});
-  G.from('#dash',{x:50,opacity:0,duration:1,ease:'power3.out',delay:.3});
+  G.from('#dash',{x:40,opacity:0,duration:1,ease:'power3.out',delay:.3});
   G.to('.float.a',{y:-8,duration:2.2,repeat:-1,yoyo:true,ease:'sine.inOut'});G.to('.float.b',{y:8,duration:2.6,repeat:-1,yoyo:true,ease:'sine.inOut'});
 }
 /* ripple on buttons */
@@ -437,7 +457,7 @@ const L=(bn,en)=>lang==='bn'?bn:en;
 document.querySelectorAll('[data-i]').forEach(e=>e.dataset.bn=e.textContent);
 
 /* currency */
-const CURS=['BDT','USD','EUR','GBP','INR','AED','SAR','MYR','SGD','CAD','AUD','JPY'],C2={BD:'BDT',US:'USD',GB:'GBP',IN:'INR',AE:'AED',SA:'SAR',MY:'MYR',SG:'SGD',CA:'CAD',AUD:'AUD',JP:'JPY'};
+const CURS=['BDT','USD','EUR','GBP','INR','AED','SAR','MYR','SGD','CAD','AUD','JPY'],C2={BD:'BDT',US:'USD',GB:'GBP',IN:'INR',AE:'AED',SA:'SAR',MY:'MYR',SG:'SGD',CA:'CAD',AU:'AUD',JP:'JPY'};
 'DE FR IT ES NL BE AT IE PT FI GR LU'.split(' ').forEach(c=>C2[c]='EUR');
 let cur=ls('cur')||'',rates={BDT:1,USD:.0082,EUR:.0076,GBP:.0065,INR:.69,AED:.03,SAR:.031,MYR:.036,SGD:.011,CAD:.011,AUD:.0125,JPY:1.25};
 const sel=$('cur');sel.innerHTML=CURS.map(c=>`<option>${c}</option>`).join('');
@@ -452,28 +472,24 @@ sel.onchange=()=>{cur=sel.value;ls('cur',cur);repaint()};
 
 /* products */
 const SEED=[
-{id:'s1',cat:'website',title:{en:'Nova SaaS Landing Template',bn:'নোভা SaaS ল্যান্ডিং টেমপ্লেট'},desc:{en:'High-converting Next.js & Tailwind CSS landing page template with interactive pricing, dark mode, and animations.',bn:'প্রাইসিং, ব্লগ, অ্যানিমেশন ও ডার্ক মোডসহ আধুনিক Next.js ল্যান্ডিং পেজ টেমপ্লেট।'},price:2500,tag:'Next.js · Tailwind',demoUrl:'https://codeandchill.store/templates/oasel',srcdoc:'<body style="font:700 28px system-ui;display:grid;place-items:center;height:100vh;margin:0;background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#fff;text-align:center;padding:20px"><div><span style="background:#1f6bff;padding:6px 14px;border-radius:99px;font-size:13px">LIVE DEMO</span><h1 style="margin:16px 0 8px">Nova SaaS Template</h1><p style="font-weight:400;font-size:16px;opacity:.8">Interactive responsive preview inside Shalbon Mart</p></div></body>'},
-{id:'s2',cat:'website',title:{en:'ShopPro E-Commerce Storefront',bn:'শপপ্রো ই-কমার্স স্টোরফ্রন্ট'},desc:{en:'Complete React e-commerce storefront with fast product filtering, slide-over cart, and modern checkout screens.',bn:'কার্ট, ফিল্টার ও চেকআউট স্ক্রিনসহ সম্পূর্ণ রেডি React ই-কমার্স ওয়েবসাইট।'},price:3500,tag:'React · Next.js',demoUrl:'https://codeandchill.store/'},
-{id:'s3',cat:'software',title:{en:'Smart Shop POS & Inventory',bn:'স্মার্ট শপ POS ও ইনভেন্টরি'},desc:{en:'Full point-of-sale billing software with barcode support, stock alerts, tally ledger, and daily profit reports.',bn:'বারকোড বিলিং, স্টক অ্যালার্ট ও বিক্রির রিপোর্টসহ পূর্ণাঙ্গ POS সফটওয়্যার।'},price:4500,tag:'1 Year License'},
-{id:'s4',cat:'component',title:{en:'Framer & React UI Kit Pro',bn:'ড্যাশবোর্ড ও ল্যান্ডিং UI কম্পোনেন্ট'},desc:{en:'Over 60+ copy-paste responsive sections, animated bento grids, charts, and glassmorphic cards.',bn:'৬০+ রেডিমেড সেকশন, বেন্টো গ্রিড, চার্ট ও ফর্ম কম্পোনেন্ট প্যাক।'},price:1800,tag:'React · UI Kit'},
-{id:'s5',cat:'bundle',title:{en:'Startup All-in-One Bundle',bn:'স্টার্টআপ স্টার্টার বান্ডেল'},desc:{en:'Includes SaaS landing template, admin dashboard UI kit, and pitch deck assets in one value pack.',bn:'ল্যান্ডিং পেজ টেমপ্লেট, ড্যাশবোর্ড UI কিট ও বিজনেস প্যাক একসাথে।'},price:5000,tag:'3 in 1 Bundle'},
-{id:'s6',cat:'asset',title:{en:'Design System & 3D Icons Pack',bn:'UI কিট ও 3D আইকন অ্যাসেট'},desc:{en:'300+ high-resolution Figma components, glass icons, and brand guidelines for web and mobile apps.',bn:'ওয়েব ও মোবাইল অ্যাপের জন্য ৩০০+ Figma কম্পোনেন্ট ও আইকন প্যাক।'},price:800,tag:'Figma · SVG'}
+{id:'s1',cat:'website',title:{en:'Nova SaaS Landing',bn:'নোভা SaaS ল্যান্ডিং'},desc:{en:'A modern SaaS & financial dashboard template in warm glass aesthetic, ready to deploy.',bn:'প্রাইসিং, ব্লগ ও ডার্ক মোডসহ আধুনিক Next.js ল্যান্ডিং পেজ টেমপ্লেট।'},price:2500,tag:'Next.js · React',demoUrl:'https://codeandchill.store/templates/oasel',srcdoc:'<body style="font:700 26px system-ui;display:grid;place-items:center;height:100vh;margin:0;background:linear-gradient(135deg,#1e293b,#1f6bff);color:#fff;text-align:center;padding:20px"><div><span style="background:#ef4444;padding:4px 10px;border-radius:4px;font-size:12px">LIVE PREVIEW</span><h2 style="margin:14px 0 6px">Nova SaaS Template</h2><p style="font-weight:400;font-size:15px;opacity:.85">Click Live Preview to open full demo URL</p></div></body>'},
+{id:'s2',cat:'website',title:{en:'ShopPro Storefront',bn:'শপপ্রো স্টোরফ্রন্ট'},desc:{en:'React e-commerce site with cart, product filters, and modern checkout screens.',bn:'কার্ট ও চেকআউটসহ React ই-কমার্স ওয়েবসাইট।'},price:3500,tag:'React · Next.js',demoUrl:'https://codeandchill.store/'},
+{id:'s3',cat:'software',title:{en:'Shop POS',bn:'শপ POS'},desc:{en:'Point-of-sale software with stock alerts, barcode billing, and sales reports.',bn:'স্টক ও বিক্রির রিপোর্টসহ POS সফটওয়্যার।'},price:4500,tag:'1 Year License'},
+{id:'s4',cat:'component',title:{en:'Dashboard UI Components',bn:'ড্যাশবোর্ড UI কম্পোনেন্ট'},desc:{en:'Reusable React charts, data tables, and multi-step forms.',bn:'পুনর্ব্যবহারযোগ্য React চার্ট, টেবিল ও ফর্ম।'},price:1800,tag:'React · Tailwind'},
+{id:'s5',cat:'bundle',title:{en:'Startup Starter Bundle',bn:'স্টার্টআপ স্টার্টার বান্ডেল'},desc:{en:'Landing page, UI kit and complete business plan pack in one bundle.',bn:'ল্যান্ডিং পেজ, UI কিট ও বিজনেস প্ল্যান প্যাক।'},price:5000,tag:'3 in 1'},
+{id:'s6',cat:'asset',title:{en:'UI Kit Assets',bn:'UI কিট অ্যাসেট'},desc:{en:'300+ Figma components and custom icons for web and mobile.',bn:'ওয়েব ও মোবাইলের ৩০০+ Figma কম্পোনেন্ট।'},price:800,tag:'Figma'}
 ];
 let products=null,cat='all',qs='',sortBy='new',onlyFav=false,fav=[];
 try{fav=JSON.parse(ls('fav')||'[]')}catch(e){}
 const pcat=p=>LEGACY[p.cat]||p.cat,pt=p=>(p.title&&(p.title[lang]||p.title.en||p.title.bn))||'',pd=p=>(p.desc&&(p.desc[lang]||p.desc.en||p.desc.bn))||'';
 const cname=c=>(CATS[c]||CATS.asset)[lang],icon=c=>`<svg viewBox="0 0 24 24">${(CATS[c]||CATS.asset).i}</svg>`;
 
-/* Helper for Demo URL / Live Preview URL */
 const getDemoUrl=p=>p.demoUrl||p.previewUrl||'';
 const hasPrev=p=>Boolean(getDemoUrl(p)||p.srcdoc);
 const pic=p=>p.image?`<img src="${esc(p.image)}" alt="${esc(pt(p))}" loading="lazy">`:icon(pcat(p));
 const buy=p=>'https://wa.me/8801337407497?text='+encodeURIComponent(`Hello Shalbon Mart, I want to buy: ${pt(p)} (${money(p.price)})`);
 const heart='<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.5-9A5.5 5.5 0 0112 6a5.5 5.5 0 019.5 6c-2.5 4.4-9.5 9-9.5 9z"/></svg>';
-const extIcon='<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>';
-const eyeIcon='<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
 
-/* Open Live Demo URL when clicking Live View */
 function openLiveDemo(p){
   const u=getDemoUrl(p);
   if(u){
@@ -488,23 +504,25 @@ function openLiveDemo(p){
 /* Code & Chill style Product Card */
 function card(p){
   const u=getDemoUrl(p);
-  const liveThumb=(p.previewUrl&&!p.image)?`<div class="cv" data-live="${esc(p.previewUrl)}">${icon(pcat(p))}<span class="live">LIVE PREVIEW</span></div>`:`<div class="cv">${pic(p)}${hasPrev(p)?'<span class="live">LIVE PREVIEW</span>':''}</div>`;
+  const liveThumb=(p.previewUrl&&!p.image)?`<div class="cv" data-live="${esc(p.previewUrl)}">${icon(pcat(p))}<span class="live">REEL</span></div>`:`<div class="cv">${pic(p)}${hasPrev(p)?'<span class="live">LIVE</span>':''}</div>`;
   const liveBtn=hasPrev(p)
-    ?(u?`<a class="btn p" href="${esc(u)}" target="_blank" rel="noopener" data-livebtn="1">${L('লাইভ ভিউ','Live Preview')} ${extIcon}</a>`:`<button class="btn p" data-livebtn="1">${L('লাইভ ভিউ','Live Preview')} ${eyeIcon}</button>`)
+    ?(u?`<a class="btn p" href="${esc(u)}" target="_blank" rel="noopener" data-livebtn="1">${L('লাইভ ভিউ ↗','Live view ↗')}</a>`:`<button class="btn p" data-livebtn="1">${L('লাইভ ভিউ','Live view')}</button>`)
     :'';
   return `<article class="pc" tabindex="0" data-id="${esc(p.id)}">
     ${liveThumb}
     <button class="ctl fav${fav.includes(p.id)?' on':''}" data-fav="${esc(p.id)}" aria-label="Save">${heart}</button>
     <div class="pb">
-      <div class="pc-meta">
-        <span class="badge">${cname(pcat(p))}${p.tag?' · '+esc(p.tag):''}</span>
+      <div class="pc-head">
+        <h3>${esc(pt(p))}</h3>
         <span class="price" data-bdt="${p.price}"></span>
       </div>
-      <h3>${esc(pt(p))}</h3>
       <p>${esc(pd(p))}</p>
-      <div class="pc-acts">
-        <button class="btn" data-viewbtn="1">${L('বিস্তারিত দেখুন','View Details')}</button>
-        ${liveBtn}
+      <div class="pc-foot">
+        <span class="badge">${cname(pcat(p))}${p.tag?' · '+esc(p.tag):''}</span>
+        <div class="pc-btns">
+          <button class="btn" data-viewbtn="1">${L('বিস্তারিত','Details')}</button>
+          ${liveBtn}
+        </div>
       </div>
     </div>
   </article>`;
@@ -530,15 +548,31 @@ function renderShop(){
   repaint();
   if(G)G.from('#shopgrid .pc',{opacity:0,y:36,duration:.55,stagger:.06,ease:'power3.out'});
 }
+
+/* Hero Preview - Strictly scaled inside #hv so it never overflows */
 function renderHero(){
   if(!products||!products.length)return;
-  const p=products.find(x=>hasPrev(x))||products.find(x=>x.image)||products[0];
+  const p=products.find(x=>x.image)||products.find(x=> x.previewUrl)||products[0];
   $('sn').textContent=products.length;$('hn').textContent=pt(p);
-  const u=getDemoUrl(p);
-  $('hv').innerHTML=p.image?`<img src="${esc(p.image)}" alt="">`:u?`<iframe src="${esc(u)}" sandbox="allow-scripts allow-same-origin" title="" tabindex="-1" style="pointer-events:none;width:1280px;height:800px;transform-origin:0 0"></iframe>`:icon(pcat(p));
-  const f=$('hv').querySelector('iframe');if(f){const fit=()=>f.style.transform=`scale(${$('hv').clientWidth/1280})`;fit();addEventListener('resize',fit)}
+  const hv=$('hv');
+  if(p.image){
+    hv.innerHTML=`<img src="${esc(p.image)}" alt="${esc(pt(p))}">`;
+  }else if(p.previewUrl){
+    hv.innerHTML=`<iframe src="${esc(p.previewUrl)}" sandbox="allow-scripts allow-same-origin" title="" tabindex="-1"></iframe>`;
+    const f=hv.querySelector('iframe');
+    const fit=()=>{if(f&&hv.clientWidth)f.style.transform=`scale(${hv.clientWidth/1280})`};
+    fit();addEventListener('resize',fit);
+  }else if(p.srcdoc){
+    hv.innerHTML=`<iframe sandbox="allow-scripts" title="" tabindex="-1"></iframe>`;
+    const f=hv.querySelector('iframe');f.srcdoc=p.srcdoc;
+    const fit=()=>{if(f&&hv.clientWidth)f.style.transform=`scale(${hv.clientWidth/1280})`};
+    fit();addEventListener('resize',fit);
+  }else{
+    hv.innerHTML=icon(pcat(p));
+  }
   $('hb').onclick=()=>detail(p);
 }
+
 function setFavN(){const n=$('favn');n.textContent=fav.length;n.hidden=!fav.length}
 function toast(t){const d=document.createElement('div');d.className='toast glass';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1800)}
 document.addEventListener('click',e=>{
@@ -551,13 +585,12 @@ document.addEventListener('click',e=>{
 },true);
 $('q').oninput=e=>{qs=e.target.value;renderShop()};$('sort').onchange=e=>{sortBy=e.target.value;renderShop()};
 
-/* Card Click Routing: Live View button opens Demo URL directly; Card opens Oasel-style Product View */
 $('shopgrid').addEventListener('click',e=>{
   const c=e.target.closest('.pc');if(!c)return;
   const p=products.find(x=>x.id===c.dataset.id);if(!p)return;
   const lv=e.target.closest('[data-livebtn]');
   if(lv){
-    if(lv.tagName==='A')return; /* Let anchor open target="_blank" naturally */
+    if(lv.tagName==='A')return;
     e.stopPropagation();
     openLiveDemo(p);
     return;
@@ -567,10 +600,10 @@ $('shopgrid').addEventListener('click',e=>{
 $('shopgrid').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.classList.contains('pc'))e.target.click()});
 
 /* =========================================================
-   OASEL STYLE PRODUCT VIEW + EMBEDDED LIVE PREVIEW
+   EXACT OASEL STYLE PRODUCT VIEW (codeandchill.store/templates/oasel)
    ========================================================= */
 const modal=$('modal'),mbody=$('mbody'),mbox=$('mbox');
-function openModal(h,id){mbody.innerHTML=h;modal.hidden=false;document.body.style.overflow='hidden';repaint();$('mx').focus();if(id)try{history.replaceState(null,'','#p-'+id)}catch(e){}if(G)G.fromTo(mbox,{y:30,opacity:0,scale:.97},{y:0,opacity:1,scale:1,duration:.4,ease:'power3.out'})}
+function openModal(h,id){mbody.innerHTML=h;modal.hidden=false;document.body.style.overflow='hidden';repaint();$('mx').focus();if(id)try{history.replaceState(null,'','#p-'+id)}catch(e){}if(G)G.fromTo(mbox,{y:24,opacity:0,scale:.98},{y:0,opacity:1,scale:1,duration:.35,ease:'power3.out'})}
 function closeModal(){modal.hidden=true;mbody.innerHTML='';mbox.classList.remove('fs');document.body.style.overflow='';try{history.replaceState(null,'',location.pathname)}catch(e){}}
 $('mx').onclick=closeModal;modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeModal()});
 const link=p=>location.origin+location.pathname+'#p-'+p.id;
@@ -580,85 +613,74 @@ function detail(p){
   const u=getDemoUrl(p);
   const canLive=hasPrev(p);
   const imgs=[p.image,...(p.gallery||[])].filter(Boolean);
-  const displayUrl=u?(u.startsWith('/')?location.origin+u:u):'live-preview://'+p.id;
-
-  const liveBtnHtml=canLive
-    ?(u
-      ?`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener">${L('লাইভ ভিউ (Demo খুলুন)','Live View')} ${extIcon}</a>`
-      :`<button class="btn" id="openDemoBtn">${L('লাইভ ভিউ','Live View')} ${extIcon}</button>`)
-    :'';
+  const oldPrice=Math.round(p.price*1.3);
 
   openModal(`
-    <div class="oasel-top">
-      <div class="oasel-bc">
-        <span>${L('মার্কেটপ্লেস','Templates')}</span> <span>/</span>
-        <span>${cname(pcat(p))}</span> <span>/</span>
-        <b>${esc(pt(p))}</b>
-      </div>
-    </div>
-    <div class="oasel-layout">
-      <div class="oasel-left">
-        <div class="oasel-browser">
-          <div class="oasel-bbar">
-            <div class="oasel-dots"><i></i><i></i><i></i></div>
-            <div class="oasel-url">
-              <span>${esc(displayUrl)}</span>
-              ${u?`<a href="${esc(u)}" target="_blank" rel="noopener" title="Open Demo URL" style="color:var(--blue);font-weight:700">↗</a>`:''}
+    <div class="oasel-grid">
+      <div>
+        <div class="oasel-frame-outer">
+          <div class="oasel-stage" id="oaselStage">
+            <span class="oasel-badge-tl">REEL</span>
+            <div class="oasel-pill-bar">
+              ${canLive?`<button type="button" class="oasel-pill on" id="pillWatch">● ${L('লাইভ প্রিভিউ','Watch Live')}</button>`:''}
+              ${imgs.length?`<button type="button" class="oasel-pill" id="pillShot">▣ ${L('স্ক্রিনশট','Screenshots')}</button>`:''}
+              ${u?`<a class="oasel-pill dark" href="${esc(u)}" target="_blank" rel="noopener">↗ ${L('ডেমো খুলুন','Open Demo')}</a>`:''}
             </div>
-            ${canLive?`
-            <div class="oasel-devs" id="devSwitch">
-              <button type="button" class="on" data-w="100%">${L('ডেস্কটপ','Desktop')}</button>
-              <button type="button" data-w="768px">${L('ট্যাবলেট','Tablet')}</button>
-              <button type="button" data-w="390px">${L('মোবাইল','Mobile')}</button>
-            </div>`:''}
-          </div>
-          <div class="oasel-viewport" id="oaselStage">
-            ${canLive
-              ?`<iframe id="oaselFrame" title="Live preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>`
-              :pic(p)}
-            ${u?`<div class="oasel-live-overlay"><a class="btn p" href="${esc(u)}" target="_blank" rel="noopener" style="padding:9px 16px;font-size:13px">${L('নতুন ট্যাবে ডেমো খুলুন','Open Live Demo')} ${extIcon}</a></div>`:''}
+            <div id="oaselMedia" style="width:100%;height:100%;display:grid;place-items:center">
+              ${canLive
+                ?`<iframe id="oaselFrame" title="Live preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>`
+                :pic(p)}
+            </div>
           </div>
         </div>
-        ${(canLive&&imgs.length)||(imgs.length>1)?`
-        <div class="thumbs" id="oaselThumbs">
-          ${canLive?`<button type="button" class="on" data-mode="live" style="font:700 12px sans-serif;color:var(--blue)">● LIVE</button>`:''}
-          ${imgs.map((imgUrl,i)=>`<img src="${esc(imgUrl)}" class="${!canLive&&i===0?'on':''}" data-img="${esc(imgUrl)}" alt="">`).join('')}
-        </div>`:''}
+        ${imgs.length>1?`<div class="thumbs" id="oaselThumbs">${imgs.map((imgUrl,i)=>`<img src="${esc(imgUrl)}" class="${i===0?'on':''}" data-img="${esc(imgUrl)}" alt="">`).join('')}</div>`:''}
       </div>
 
-      <div class="oasel-right">
-        <div>
-          <span class="badge" style="margin-bottom:10px">${cname(pcat(p))}${p.tag?' · '+esc(p.tag):''}</span>
-          <div class="oasel-head">
-            <h2 class="oasel-title">${esc(pt(p))}</h2>
-            <div class="oasel-price-box price" data-bdt="${p.price}"></div>
-          </div>
+      <div class="oasel-info">
+        <h2 class="oasel-title">${esc(pt(p))}</h2>
+        <div class="oasel-price-line">
+          <span class="price" data-bdt="${p.price}"></span>
+          <del class="price" data-bdt="${oldPrice}"></del>
+          <span class="disc">-30%</span>
         </div>
-
         <p class="oasel-desc">${esc(pd(p))}</p>
 
-        <div class="oasel-btns">
-          ${liveBtnHtml}
-          <a class="btn p" target="_blank" rel="noopener" href="${buy(p)}">${L('এখনই কিনুন / অর্ডার','Buy Template')}</a>
+        <div class="oasel-meta-pills">
+          <button type="button" class="oasel-like${fav.includes(p.id)?' on':''}" id="modalLike">♥ ${L('পছন্দ','Like')}</button>
+          <span class="oasel-views">1.4K VIEWS</span>
         </div>
 
-        <ul class="oasel-feats">
-          <li>${L('রেসপনসিভ ডিজাইন','Responsive Design')}</li>
-          <li>${L('লাইভ প্রিভিউ রেডি','Live Preview Ready')}</li>
-          <li>${L('সোর্স ফাইল ও গাইড','Source Files Included')}</li>
-          <li>${L('সরাসরি সাপোর্ট','Direct Developer Support')}</li>
+        <ul class="oasel-checks">
+          <li>${esc(p.tag||cname(pcat(p)))} ${L('ভেরিফাইড প্রোডাক্ট','verified template')}</li>
+          <li>${L('রেসপনসিভ ও দ্রুত লোডিং — ইনস্টল করলেই চলবে','Responsive & fast — ready to run out of the box')}</li>
+          <li>${L('আনলিমিটেড প্রজেক্ট ও ক্লায়েন্ট সাইটে ব্যবহারযোগ্য','Build unlimited client sites with it')}</li>
         </ul>
 
-        <div class="oasel-specs">
-          <h4>${L('টেমপ্লেট তথ্য','Product Details')}</h4>
-          <div class="oasel-spec-row"><span>${L('ক্যাটাগরি','Category')}</span><strong>${cname(pcat(p))}</strong></div>
-          <div class="oasel-spec-row"><span>${L('টেকনোলজি / ট্যাগ','Stack / Tag')}</span><strong>${esc(p.tag||'Ready to use')}</strong></div>
-          <div class="oasel-spec-row"><span>${L('ডেলিভারি','Delivery')}</span><strong>${L('তাৎক্ষণিক ডাউনলোড','Instant Download')}</strong></div>
+        <div class="oasel-actions">
+          <a class="obtn obtn-buy" target="_blank" rel="noopener" href="${buy(p)}">
+            ${L('এখনই কিনুন','Buy')} · <span class="price" data-bdt="${p.price}"></span> →
+          </a>
+          <a class="obtn obtn-cart" target="_blank" rel="noopener" href="${buy(p)}">
+            🛒 ${L('WhatsApp-এ অর্ডার করুন','Order via WhatsApp')}
+          </a>
+          ${canLive?(u
+            ?`<a class="obtn obtn-live" href="${esc(u)}" target="_blank" rel="noopener">▸ ${L('লাইভ ভিউ (Demo URL)','Live preview')} ↗</a>`
+            :`<button type="button" class="obtn obtn-live" id="modalLiveBtn">▸ ${L('লাইভ ভিউ','Live preview')} ↗</button>`)
+          :''}
         </div>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px">
-          <button class="btn" id="msh" style="padding:8px 16px;font-size:13.5px">${L('লিংক শেয়ার করুন','Share Product')}</button>
-          ${canLive?`<button class="btn" id="mfs" style="padding:8px 16px;font-size:13.5px">${L('ফুলস্ক্রিন প্রিভিউ','Fullscreen Preview')}</button>`:''}
+        <div class="oasel-notes">
+          <span>${L('ডেমোর মতো কাজ না করলে শতভাগ সাপোর্ট গ্যারান্টি','Full support guarantee if it does not work like the demo')}</span>
+          <span>${L('নিরাপদ পেমেন্ট ও তাৎক্ষণিক ডেলিভারি','Secure checkout & instant file delivery')}</span>
+        </div>
+
+        <div class="oasel-pack">
+          <b>PACK</b> ${L('সব টেমপ্লেট ও কাস্টম বান্ডেল অফারে পেতে যোগাযোগ করুন','All templates & bundle discount available on request')}
+        </div>
+
+        <div class="oasel-bottom-btns">
+          <button type="button" id="mfs">${L('ফুলস্ক্রিন প্রিভিউ ▾','Fullscreen peek ▾')}</button>
+          <button type="button" id="msh">${L('শেয়ার লিংক','Share link')}</button>
         </div>
       </div>
     </div>
@@ -671,42 +693,44 @@ function detail(p){
   };
   setLiveFrame();
 
-  const sw=$('devSwitch');
-  if(sw){
-    sw.addEventListener('click',e=>{
-      const b=e.target.closest('[data-w]');if(!b)return;
-      sw.querySelectorAll('[data-w]').forEach(x=>x.classList.toggle('on',x===b));
-      const f=$('oaselFrame');if(f)f.style.width=b.dataset.w;
-    });
-  }
+  const pw=$('pillWatch'),ps=$('pillShot'),media=$('oaselMedia');
+  if(pw)pw.onclick=()=>{
+    pw.classList.add('on');if(ps)ps.classList.remove('on');
+    media.innerHTML=`<iframe id="oaselFrame" title="Live preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>`;
+    setLiveFrame();
+  };
+  if(ps)ps.onclick=()=>{
+    ps.classList.add('on');if(pw)pw.classList.remove('on');
+    media.innerHTML=pic(p);
+  };
 
   const th=$('oaselThumbs');
   if(th){
     th.addEventListener('click',e=>{
-      const liveBtn=e.target.closest('[data-mode="live"]');
-      const imgEl=e.target.closest('[data-img]');
-      const stg=$('oaselStage');
-      if(liveBtn){
-        th.querySelectorAll('.on').forEach(x=>x.classList.remove('on'));
-        liveBtn.classList.add('on');
-        stg.innerHTML=`<iframe id="oaselFrame" title="Live preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>${u?`<div class="oasel-live-overlay"><a class="btn p" href="${esc(u)}" target="_blank" rel="noopener" style="padding:9px 16px;font-size:13px">${L('নতুন ট্যাবে ডেমো খুলুন','Open Live Demo')} ${extIcon}</a></div>`:''}`;
-        setLiveFrame();
-      }else if(imgEl){
-        th.querySelectorAll('.on').forEach(x=>x.classList.remove('on'));
-        imgEl.classList.add('on');
-        stg.innerHTML=`<img src="${esc(imgEl.dataset.img)}" alt="">`;
-      }
+      const imgEl=e.target.closest('[data-img]');if(!imgEl)return;
+      th.querySelectorAll('.on').forEach(x=>x.classList.remove('on'));
+      imgEl.classList.add('on');
+      if(ps){ps.classList.add('on');if(pw)pw.classList.remove('on');}
+      media.innerHTML=`<img src="${esc(imgEl.dataset.img)}" alt="">`;
     });
   }
 
-  const odb=$('openDemoBtn');if(odb)odb.onclick=()=>openLiveDemo(p);
-  const mfs=$('mfs');if(mfs)mfs.onclick=()=>previewModal(p);
+  const ml=$('modalLike');
+  if(ml)ml.onclick=()=>{
+    fav=fav.includes(p.id)?fav.filter(x=>x!==p.id):[...fav,p.id];
+    ls('fav',JSON.stringify(fav));
+    ml.classList.toggle('on',fav.includes(p.id));
+    setFavN();renderShop();
+  };
+
+  const mlb=$('modalLiveBtn');if(mlb)mlb.onclick=()=>openLiveDemo(p);
+  const mfs=$('mfs');if(mfs)mfs.onclick=()=>canLive?previewModal(p):toast(L('এই প্রোডাক্টের লাইভ ডেমো নেই','No live preview available'));
   $('msh').onclick=()=>share(p);
 }
 
 function previewModal(p){
   const u=getDemoUrl(p);
-  openModal(`<div class="tb"><strong>${esc(pt(p))}</strong><span class="sp"></span><button class="btn on" data-w="100%">${L('ডেস্কটপ','Desktop')}</button><button class="btn" data-w="768px">${L('ট্যাবলেট','Tablet')}</button><button class="btn" data-w="390px">${L('মোবাইল','Mobile')}</button><button class="btn" id="rl">↻</button>${u?`<a class="btn p" id="nt" target="_blank" rel="noopener" href="${esc(u)}">${L('ডেমো লিংক খুলুন','Open Demo URL')} ${extIcon}</a>`:''}<button class="btn" id="fsb">${L('ফুলস্ক্রিন','Fullscreen')}</button><button class="btn" id="backDet">${L('প্রোডাক্ট তথ্য','Details')}</button></div><div class="stage"><iframe id="pf" title="Live preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe></div>`,p.id);
+  openModal(`<div class="tb"><strong>${esc(pt(p))}</strong><span class="sp"></span><button class="btn on" data-w="100%">${L('ডেস্কটপ','Desktop')}</button><button class="btn" data-w="768px">${L('ট্যাবলেট','Tablet')}</button><button class="btn" data-w="390px">${L('মোবাইল','Mobile')}</button><button class="btn" id="rl">↻</button>${u?`<a class="btn p" id="nt" target="_blank" rel="noopener" href="${esc(u)}">${L('ডেমো লিংক খুলুন ↗','Open Demo URL ↗')}</a>`:''}<button class="btn" id="fsb">${L('ফুলস্ক্রিন','Fullscreen')}</button><button class="btn" id="backDet">${L('← প্রোডাক্ট ভিউ','← Back')}</button></div><div class="stage"><iframe id="pf" title="Live preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe></div>`,p.id);
   const f=$('pf');if(u)f.src=u;else f.srcdoc=p.srcdoc;
   $('rl').onclick=()=>{const s=f.src,d=f.srcdoc;f.src='about:blank';setTimeout(()=>{if(u)f.src=s;else f.srcdoc=d},50)};
   $('fsb').onclick=()=>mbox.classList.toggle('fs');

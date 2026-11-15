@@ -38,7 +38,7 @@ button:disabled{opacity:.6;cursor:wait}
       <h2>Add product</h2>
       <form id="f">
         <div class="r">
-          <div><label>Category</label><select id="cat"><option value="template">Template</option><option value="software">Software</option><option value="digital">Digital download</option></select></div>
+          <div><label>Category</label><select id="cat"><option value="software">Software</option><option value="website">Website / Template</option><option value="component">Component</option><option value="bundle">Bundle</option><option value="asset">Asset</option></select></div>
           <div><label>Price (BDT)</label><input id="price" type="number" min="0" required></div>
           <div><label>Title (English)</label><input id="te" required></div>
           <div><label>Title (বাংলা)</label><input id="tb"></div>
@@ -49,7 +49,7 @@ button:disabled{opacity:.6;cursor:wait}
           <div><label>More images (optional)</label><input id="gal" type="file" accept="image/*" multiple></div>
           <div><label>Product file (delivered after purchase)</label><input id="file" type="file"></div>
         </div>
-        <div id="tpl" class="r">
+        <div id="tpl" class="r" hidden>
           <div><label>Live preview ZIP (built static site, index.html inside, relative paths)</label><input id="pz" type="file" accept=".zip"></div>
           <div><label>or Live demo URL (https://…)</label><input id="demo" type="url"></div>
         </div>
@@ -87,7 +87,7 @@ async function load() {
 }
 $('go').onclick = async () => { pw = $('pw').value; try { await enter() } catch (e) { $('le').textContent = e.message === 'unauthorized' ? 'Wrong password' : 'Error: ' + e.message } };
 $('pw').onkeydown = (e) => { if (e.key === 'Enter') $('go').click() };
-$('cat').onchange = () => { $('tpl').hidden = $('cat').value !== 'template' };
+$('cat').onchange = () => { $('tpl').hidden = !['website','component'].includes($('cat').value) };
 $('ls').onclick = async (e) => {
   const id = e.target.dataset.id; if (!id || !confirm('Delete this product?')) return;
   await api('save', { products: items.filter((p) => p.id !== id) }); await load();
@@ -103,7 +103,7 @@ $('f').onsubmit = async (e) => {
     st.textContent = 'Uploading product file…';
     const file = one('file') ? await up(one('file')) : '';
     let previewZip = '';
-    if ($('cat').value === 'template' && one('pz')) { st.textContent = 'Uploading preview…'; previewZip = await up(one('pz')); }
+    if (['website','component'].includes($('cat').value) && one('pz')) { st.textContent = 'Uploading preview…'; previewZip = await up(one('pz')); }
     const p = {
       id, cat: $('cat').value, price: +$('price').value, tag: $('tag').value.trim(),
       title: { en: $('te').value.trim(), bn: $('tb').value.trim() || $('te').value.trim() },

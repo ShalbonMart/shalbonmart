@@ -223,6 +223,15 @@ select.ctl{width:auto;padding:0 10px;border-radius:999px;margin:0;appearance:non
         <div class="dd"><a href="#services">IT সার্ভিস</a><div class="menu">
           <a href="https://shalbonmart.vercel.app/services">Web Development</a><a href="https://shalbonmart.vercel.app/services">E-commerce Solutions</a><a href="https://shalbonmart.vercel.app/services">Custom Applications</a></div></div>
         <a href="#why">কেন আমরা</a><a href="#contact">যোগাযোগ</a>
+        <!-- Search & Filter Bar -->
+<div class="shop-filter-bar" style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
+  <input type="text" id="shopSearch" placeholder="প্রোডাক্ট খুঁজুন (Search products)..." style="flex: 1; min-width: 220px; padding: 12px 16px; border-radius: 14px; border: 1px solid var(--edge); background: var(--chip); color: var(--ink); font: inherit;">
+  <select id="shopSort" style="width: auto; padding: 12px 16px; border-radius: 14px; border: 1px solid var(--edge); background: var(--chip); color: var(--ink); font: inherit;">
+    <option value="new">সর্বশেষ (Newest)</option>
+    <option value="low">দাম কম থেকে বেশি (Price: Low to High)</option>
+    <option value="high">দাম বেশি থেকে কম (Price: High to Low)</option>
+  </select>
+</div>
       </div>
       <div class="navr">
         <select class="ctl" id="cur" aria-label="Currency"></select>

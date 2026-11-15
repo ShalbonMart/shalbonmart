@@ -8,8 +8,15 @@ export default async function handler(req, res) {
       products: all
         .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))
         .map((p) => ({
-          id: p.id, cat: p.cat, title: p.title, desc: p.desc, price: p.price,
-          tag: p.tag, image: p.image, gallery: p.gallery,
+          id: p.id,
+          cat: p.cat,
+          title: p.title,
+          desc: p.desc,
+          price: p.price,
+          tag: p.tag,
+          image: p.image,
+          gallery: p.gallery,
+          demoUrl: p.demoUrl || '',
           previewUrl: p.previewSlug && p.previewZip ? `/preview/${p.previewSlug}/` : p.demoUrl || '',
         })),
     });

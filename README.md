@@ -1,16 +1,41 @@
-## Hi there 👋
+# 👋 Hi, I'm Mamun Khan
 
-<!--
-**ShalbonMart/shalbonmart** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### Founder of [ShalbonMart](https://shalbonmart.com) | Web Developer | Digital Entrepreneur
 
-Here are some ideas to get you started:
+Welcome to my GitHub! I'm passionate about building modern websites, digital products, software solutions, and innovative eCommerce experiences.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### 🚀 What I'm Working On
+- 🛍️ Building **ShalbonMart** — a modern digital & technology marketplace.
+- 💻 Developing responsive websites and web applications.
+- 🎨 Exploring modern UI/UX and interactive web animations.
+- ☁️ Working with cloud deployment and web technologies.
+
+### 🌱 Currently Learning
+- Next.js, React & TypeScript
+- JavaScript, HTML & CSS
+- Tailwind CSS & modern UI design
+- Cloud deployment and web infrastructure
+
+### 🛠️ Technologies & Tools
+- HTML5, CSS3, JavaScript
+- React.js & Next.js
+- Tailwind CSS
+- Git & GitHub
+- Vercel & Cloudflare
+
+### 💬 Ask Me About
+- Website Design & Development
+- eCommerce Solutions
+- Digital Products & Software
+- Web Hosting & Deployment
+
+### 📫 Connect With Me
+- 🌐 Website: https://shalbonmart.com
+- 💬 WhatsApp: +8801337407497
+- 📧 Email: support@shalbonmart.com
+
+---
+
+**SHOP SMARTER. LIVE BETTER.** 🌿
+
+⭐ Thanks for visiting my profile!
